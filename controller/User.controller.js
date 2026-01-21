@@ -37,12 +37,10 @@ const Attendance = async(req , res) => {
         fs.unlinkSync(req.file.path);
         return res.send("Email is not resister");
     }
-    
-    const bool = true;
 
-    // const bool = await compareFaces( existedUser.imagePath,req.file.path);
+    const bool = await compareFaces( existedUser.imagePath,req.file.path);
 
-    if(!bool){
+    if(!bool.match){
         fs.unlinkSync(req.file.path);
         return res.send("User face not detected");
     }
